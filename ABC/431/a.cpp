@@ -13,6 +13,7 @@ int main(){
   // ---- solve ----
   ll h,b;
   cin >> h >> b;
-  cout << h << b << endl;
+  if (h>=b) cout << h-b <<endl;
+  else cout << 0 << endl;
   return 0;
 }
