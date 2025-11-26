@@ -48,6 +48,6 @@ int main(){
   // ---- solve ----
   ll n;
   cin >> n;
-  cout << n*n << endl; 
+  cout << n*n << endl;
   return 0;
 }
