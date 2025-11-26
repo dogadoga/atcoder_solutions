@@ -10,7 +10,7 @@ macOS → `brew install gcc`
 ### VS Code設定例 (settings.json)
 ```json
   "code-runner.executorMap": {
-    "cpp": "/opt/homebrew/bin/g++-15 -std=gnu++17 -O2 -Wall -Wextra -isysroot \"$(xcrun --show-sdk-path)\" -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt < ../../input.txt && rm $fileNameWithoutExt"
+    "cpp": "/opt/homebrew/bin/g++-15 -std=gnu++17 -O2 -Wall -Wextra -isysroot \"$(xcrun --show-sdk-path)\" -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt && rm $fileNameWithoutExt"
   },
   "code-runner.runInTerminal": true,
   "code-runner.saveFileBeforeRun": true,
@@ -32,7 +32,7 @@ int main() {
 }
 ```
 
-→ input.txt にテストを書いて、`Ctrl+Option+N` で実行。
+→ `Ctrl+Option+N` で実行し、ターミナルで入力。入力後 `Ctrl+D` で EOF を送信。
 
 ## フォルダ構造
 
@@ -43,7 +43,6 @@ atcoder/
 │   │   └── a.cpp
 │   └── 136/
 │       └── a.cpp
-├── input.txt
 ├── template.cpp
 └── .gitignore
 ```
@@ -52,6 +51,7 @@ atcoder/
 
 ## 自動生成スクリプト
 newcp コマンドを登録（zsh に追加）
+
 ```bash
 # ~/.zshrc に追加
 newcp() {
@@ -60,7 +60,6 @@ newcp() {
   prob=$3
   mkdir -p ~/dev/atcoder/$contest/$number
   cp ~/dev/atcoder/template.cpp ~/dev/atcoder/$contest/$number/${prob}.cpp
-  touch ~/dev/atcoder/input.txt
   cd ~/dev/atcoder/$contest/$number
 }
 ```
@@ -73,7 +72,6 @@ newcp ABC 135 a
 これで
 ~/dev/atcoder/ABC/135/a.cpp
 がテンプレ入りで自動生成され、そのディレクトリに移動します。
-`input.txt` は `~/dev/atcoder/input.txt` に1つだけ作成されます（既に存在する場合は作成されません）。
 
 ## template.cpp の例
 ```cpp
