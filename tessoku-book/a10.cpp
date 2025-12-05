@@ -18,8 +18,9 @@ constexpr int mod1 = 998244353;
 constexpr int mod2 = 1000000007;
 
 // マクロ
-#define rep(i,s,n) for(int i = (int)(s); i <= (int)(n); i++)
-#define repr(i,s,n) for(int i = (int)(s); i >= (int)(n); i--)
+#define rep(i,s,n) for(int i = (int)(s); i < (int)(n); i++)
+#define rep1(i,s,n) for(int i = (int)(s); i <= (int)(n); i++)
+#define rrep(i,s,n) for(int i = (int)(s); i >= (int)(n); i--)
 #define rep_b(bit,n) for(int bit = 0; bit < (1<<(n)); bit++)
 #define enum_bit(i) if(bit & (1<<(i)))
 #define all(a) (a).begin(),(a).end()
@@ -53,20 +54,20 @@ int main(){
   cin.tie(nullptr);
   // ---- solve ----
   cin >> n;
-  rep(i,1,n) cin >> a[i];
+  rep1(i,1,n) cin >> a[i];
   cin >> d;
-  rep(i,1,d) cin >> l[i] >> r[i];
+  rep1(i,1,d) cin >> l[i] >> r[i];
 
   // p[i] を求める
   p[1] = a[1];
-  rep(i,2,n) p[i] = max(p[i-1],a[i]);
+  rep1(i,2,n) p[i] = max(p[i-1],a[i]);
 
   // q[i] を求める
   q[n] = a[n];
-  repr(i,n-1,1) q[i] = max(q[i+1],a[i]);
+  rrep(i,n-1,1) q[i] = max(q[i+1],a[i]);
 
   // max(p,q) を求める
-  rep(i,1,d) cout << max(p[l[i]-1],q[r[i]+1]) << endl;
+  rep1(i,1,d) cout << max(p[l[i]-1],q[r[i]+1]) << endl;
 
   return 0;
 }
